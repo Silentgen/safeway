@@ -30,6 +30,7 @@ jobs:
           run:
             working-directory: .
         steps:
-          - run: docker build -t test .
+          - name: Run a script
+            run: docker build -t test .
         with:
           images: ${{ github.repository }}
