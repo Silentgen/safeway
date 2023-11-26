@@ -12,7 +12,6 @@ on:
 jobs:
   build:
     name: Build & push docker image
-    runs-on: self-hosted
-    steps:
-      - name: Docker Build
-        run: docker build -t test .
+    runs:
+      using: 'docker'
+      image: 'Dockerfile'
