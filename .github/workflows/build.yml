@@ -24,6 +24,7 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=raw,value=dev-{{date 'YYYYMMDDhhmm'}}.{{sha}},enable=${{ github.ref_type != 'tag' }}
       - name: Docker Build
+        runs-on: self-hosted
         steps:
           - run: docker build -t test .
 #      - name: Log in to Docker Hub
