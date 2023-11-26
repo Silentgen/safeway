@@ -16,5 +16,3 @@ jobs:
     steps:
       - name: Docker Build
         run: docker build -t test .
-    with:
-      images: ${{ github.repository }}
