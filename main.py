@@ -74,10 +74,10 @@ def accept(driver):
     logger.debug("Accepting the banners")
     try:
         css = "#onetrust-accept-btn-handler"
-        cookies = WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.CSS_SELECTOR, css)))
+        cookies = WebDriverWait(driver, 20).until(ec.presence_of_element_located((By.CSS_SELECTOR, css)))
         cookies.click()
         logger.debug("Accepted the privacy banner")
-    except NoSuchElementException:
+    except (NoSuchElementException, TimeoutException):
         logger.debug("Nothing is here to accept")
         take_screenshot(driver)
 
@@ -121,7 +121,7 @@ def main():
         pass
     os.mkdir("./ss")
     import undetected_chromedriver as uc
-    driver = uc.Chrome(headless=True, use_subprocess=True)
+    driver = uc.Chrome(headless=True, use_subprocess=True, version_main=119)
     driver.implicitly_wait(time_to_wait=5)
     driver.get(COUPON_URL)
 
